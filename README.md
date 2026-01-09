@@ -12,7 +12,8 @@
 
 ---
 
-# Instructions for building locally (you do not need to do this for the installes above)
+# Instructions for building locally (for developers)
+You do not need to do this for the installers above
 
 ## 0) One-time prerequisites
 
