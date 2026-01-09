@@ -1,5 +1,17 @@
 # Battery Management System GUI
 
+## Latest release installers:
+
+### **Windows 64-bit (x86)**: [Click to Download](https://github.com/DallasFormulaRacing/bms-gui/releases/latest/download/BMS-GUI_0.1.0_x64-setup.exe)
+
+### **macOS (Apple Silicon)**: [Click to Download](https://github.com/DallasFormulaRacing/bms-gui/releases/latest/download/BMS-GUI_0.1.0_aarch64.dmg)
+
+### **Linux App Image**: [Click to Download](https://github.com/DallasFormulaRacing/bms-gui/releases/latest/download/BMS-GUI_0.1.0_amd64.AppImage)
+
+### **Linux Debian**: [Click to Download](https://github.com/DallasFormulaRacing/bms-gui/releases/latest/download/BMS-GUI_0.1.0_amd64.deb)
+
+---
+
 ## 0) One-time prerequisites
 
 ### Install toolchains
