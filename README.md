@@ -12,6 +12,8 @@
 
 ---
 
+# Instructions for building locally (you do not need to do this for the installes above)
+
 ## 0) One-time prerequisites
 
 ### Install toolchains
