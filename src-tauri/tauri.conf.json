@@ -15,8 +15,8 @@
         "title": "BATTERY PACK INTERFACE",
         "width": 1920,
         "height": 1080,
-        "resizable": true,
-        "fullscreen": false
+        "resizable": false,
+        "fullscreen": true
       }
     ],
     "security": {
