@@ -2,137 +2,51 @@
 
 ## Latest release installers:
 
-### **Windows 64-bit (x86)**: [Click to Download](https://github.com/DallasFormulaRacing/bms-gui/releases/latest/download/BMS-GUI_0.1.0_x64-setup.exe)
+| Installer Download Links                                                                                                                             |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Windows on x86-64**                                                                                                                                |
+| [**(Recommended) Installer Executable (.exe)**](https://github.com/DallasFormulaRacing/bms-gui/releases/latest/download/BMS-GUI_0.1.0_x64-setup.exe) |
+| [**Microsoft Installer package (.msi)**](https://github.com/DallasFormulaRacing/bms-gui/releases/latest/download/v0.0.2/BMS-GUI_0.1.0_x64_en-US.msi) |
+| **Apple Silicon**                                                                                                                                    |
+| [**macOS Disk Image Mounter (.dmg)**](https://github.com/DallasFormulaRacing/bms-gui/releases/latest/download/BMS-GUI_0.1.0_aarch64.dmg)             |
+| **Linux on x86-64**                                                                                                                                  |
+| [**Linux App Image (.AppImage)**](https://github.com/DallasFormulaRacing/bms-gui/releases/latest/download/BMS-GUI_0.1.0_amd64.AppImage)              |
+| [**Linux Debian Package (.deb)**](https://github.com/DallasFormulaRacing/bms-gui/releases/latest/download/BMS-GUI_0.1.0_amd64.deb)                   |
 
-### **macOS (Apple Silicon)**: [Click to Download](https://github.com/DallasFormulaRacing/bms-gui/releases/latest/download/BMS-GUI_0.1.0_aarch64.dmg)
+## Overriding Antivirus/Malware Protection Measures
 
-### **Linux App Image**: [Click to Download](https://github.com/DallasFormulaRacing/bms-gui/releases/latest/download/BMS-GUI_0.1.0_amd64.AppImage)
+> [!WARNING]
+> This application is not signed or notarized. Commercial operating systems such as Windows and macOS **will** flag the app as malware/damaged or some other variation which will keep you from launching the app.
 
-### **Linux Debian**: [Click to Download](https://github.com/DallasFormulaRacing/bms-gui/releases/latest/download/BMS-GUI_0.1.0_amd64.deb)
+### Overriding Antivirus/Malware Protection Measures for macOS:
+
+Install the app normally by launching the .dmg and dragging it into your Applications folder.
+
+Now, open your terminal and run the following commands:
+
+```bash
+xattr -cr /Applications/BMS\ Interface.app
+codesign --force --deep --sign - /Applications/BMS\ Interface.app
+```
+
+Open with
+
+```bash
+open /Applications/BMS\ Interface.app
+```
+
+or open graphically from the desktop environment.
+
+### Overriding Antivirus/Malware Protection Measures for Windows:
+
+[WIP]
+
+> [!NOTE]
+> If you still cannot get past Microsoft Defender or macOS Gatekeeper, you may elect to build locally; instructions below.
+
+### Overriding Antivirus/Malware Protection Measures for Linux:
+
+> [!NOTE]
+> For users running Linux having trouble building the AppImage, try setting NO_STRIP to true by running `export NO_STRIP=true`
 
 ---
-
-# Instructions for building locally (for developers)
-You do not need to do this for the installers above
-
-## 0) One-time prerequisites
-
-### Install toolchains
-
-* Node.js 
-* Rust 
-
-Verify:
-
-```bash
-node -v
-npm -v
-rustc --version
-cargo --version
-```
-
----
-
-## 1) Install frontend dependencies
-
-```bash
-npm install
-```
-This creates `node_modules/`
-
-
----
-
-## 2) Run the frontend alone (sanity check)
-
-```bash
-npm run dev
-```
-
-```
-Local: http://localhost:5173/
-```
-
-```bash
-Ctrl+C
-```
-
----
-
-## 3) Confirm Tauri config is correct
-
-Open:
-
-```
-src-tauri/tauri.conf.json
-```
-
-```json
-"build": {
-  "frontendDist": "../dist",
-  "devUrl": "http://localhost:5173",
-  "beforeDevCommand": "npm run dev",
-  "beforeBuildCommand": "npm run build"
-}
-```
-
----
-
-## 4) First Tauri dev run (builds Rust once)
-
-```bash
-npx tauri dev
-```
-
-```bash
-Ctrl+C
-```
-
----
-
-## 5) Build the production frontend assets
-
-```bash
-npm run build
-```
-
-Confirm you now have:
-
-```
-dist/index.html
-dist/assets/...
-```
-
----
-
-## 6) Build the actual installable app (release)
-
-```bash
-npx tauri build
-```
-
-This produces OS-native outputs under:
-
-```
-src-tauri/target/release/bundle/
-```
-
-Common locations:
-
-### Windows
-
-* `src-tauri/target/release/bundle/nsis/*.exe`
-* `src-tauri/target/release/bundle/msi/*.msi`
-
-### macOS
-
-* `src-tauri/target/release/bundle/macos/*.app`
-* `src-tauri/target/release/bundle/dmg/*.dmg`
-
-### Linux
-
-* `src-tauri/target/release/bundle/appimage/*.AppImage`
-* `src-tauri/target/release/bundle/deb/*.deb`
-
-Run the produced artifact to confirm it launches **without** a dev server.
-

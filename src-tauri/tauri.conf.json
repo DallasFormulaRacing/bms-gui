@@ -1,6 +1,6 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
-  "productName": "BMS-GUI",
+  "productName": "BMS Interface",
   "version": "0.1.0",
   "identifier": "internal.dfr-electric.battery-monitor",
   "build": {
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "BATTERY PACK INTERFACE",
+        "title": "Battery Pack Interface",
         "width": 1920,
         "height": 1080,
         "resizable": false,
